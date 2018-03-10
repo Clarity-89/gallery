@@ -1,8 +1,13 @@
-{% load i18n %}
+{% load i18n static %}
 <ul class="nav">
     <li class="nav-item">
         <a class="nav-link {% if active == 'home' %}active{% endif %}" href="#">{% trans "Home" %}</a>
     </li>
+
+    <li class="nav-item">
+        <a class="nav-link {% if active == 'photos' %}active{% endif %}" href="{% url 'photos:list' %}">{% trans "Photos" %}</a>
+    </li>
+
     <li class="nav-item">
         <a class="nav-link {% if active == 'profile' %}active{% endif %}" href="#">{% trans "Profile" %}</a>
     </li>

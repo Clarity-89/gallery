@@ -1,7 +1,10 @@
 {% extends "base.html" %}{% load i18n static %}
 
-{% block content %}
+{% block header %}
+    {% include "includes/navbar.html" with active='photos' %}
+{% endblock %}
 
+{% block content %}
     <div class="photos container">
         <div class="row">
             {% for photo in photos %}

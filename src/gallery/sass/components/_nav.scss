@@ -1,0 +1,11 @@
+.nav {
+  padding: 1em;
+}
+
+.nav-link {
+  color: #000;
+
+  &.active {
+    text-decoration: underline;
+  }
+}

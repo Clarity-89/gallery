@@ -1,0 +1,15 @@
+{% extends "base.html" %}{% load i18n static %}
+
+{% block content %}
+
+    <div class="photos">
+        {% for photo in photos %}
+            <div class="photo__card">
+                <img src="{{ photo.picture.url }}" class="photos__img">
+                <h4 class="photos__title">{{ photo.title }}</h4>
+                <p class="photos__location">{{ photo.location }}</p>
+                <p class="photos__date">{{ photo.date_added }}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

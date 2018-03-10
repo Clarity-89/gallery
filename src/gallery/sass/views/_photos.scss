@@ -1,12 +1,27 @@
 .photos {
   padding: 5em 0;
-
+  display: flex;
 
   &__card {
     width: 300px;
+    margin: 0 2em 4em 0;
   }
 
   &__img {
     width: 100%;
+    max-height: 200px;
+  }
+
+  // Mobile styles
+  @include xs-screen {
+    flex-flow: wrap;
+
+    &__card {
+      margin: 1em auto;
+    }
+
+    .col-sm {
+      padding-right: 0;
+    }
   }
 }

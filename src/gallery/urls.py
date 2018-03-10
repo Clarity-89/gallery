@@ -9,7 +9,7 @@ from django.views.generic.base import TemplateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('gallery.photos.urls')),
+    path('photos/', include('gallery.photos.urls', namespace='photos'), name='photos'),
 ]
 
 # NOTE: The staticfiles_urlpatterns also discovers static files (ie. no need to run collectstatic). Both the static

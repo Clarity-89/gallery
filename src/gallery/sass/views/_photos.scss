@@ -1,7 +1,11 @@
 .photos {
+  padding: 5em 0;
+
+  &__card {
+    width: 180px;
+  }
 
   &__img {
-    width: 100px;
-    height: 100px;
+    width: 100%;
   }
 }

@@ -2,13 +2,15 @@
 
 {% block content %}
 
-    <div class="photos">
+    <div class="photos container">
         {% for photo in photos %}
-            <div class="photo__card">
-                <img src="{{ photo.picture.url }}" class="photos__img">
-                <h4 class="photos__title">{{ photo.title }}</h4>
-                <p class="photos__location">{{ photo.location }}</p>
-                <p class="photos__date">{{ photo.date_added }}</p>
+            <div class="photos__card card">
+                <img src="{{ photo.picture.url }}" class="photos__img card-img-top" alt="{{ photo.title }}">
+                <div class="card-body">
+                    <h4 class="photos__title card-title">{{ photo.title }}</h4>
+                    <h6 class="card-subtitle mb-2 text-muted">{{ photo.date_added }}</h6>
+                    <p class="photos__location card-text">{{ photo.location }}</p>
+                </div>
             </div>
         {% endfor %}
     </div>

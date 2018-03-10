@@ -73,7 +73,6 @@ module.exports = {
 
     devtool: 'inline-source-map',
 
-    // Minify output
     plugins: [
         extractMainCss, extractPrintCss
     ],

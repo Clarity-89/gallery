@@ -60,6 +60,7 @@ INSTALLED_APPS = [
 
     # Project applications.
     'gallery.accounts',
+    'gallery.photos',
 ]
 
 MIDDLEWARE = [

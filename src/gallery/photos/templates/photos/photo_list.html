@@ -9,14 +9,16 @@
         <div class="row">
             {% for photo in photos %}
                 <div class="col-sm">
-                    <a href="{% url 'photos:detail' pk=photo.id %}" class="photos__card card">
+                    <div class="photos__card card">
                         <img src="{{ photo.picture.url }}" class="photos__img card-img-top" alt="{{ photo.title }}">
                         <div class="card-body">
-                            <h4 class="photos__title card-title">{{ photo.title }}</h4>
+                            <a href="{% url 'photos:detail' pk=photo.id %}">
+                                <h4 class="photos__title card-title">{{ photo.title }}</h4>
+                            </a>
                             <h6 class="card-subtitle mb-2 text-muted">{{ photo.date_added }}</h6>
                             <p class="photos__location card-text">{{ photo.location }}</p>
                         </div>
-                    </a>
+                    </div>
                 </div>
             {% endfor %}
         </div>

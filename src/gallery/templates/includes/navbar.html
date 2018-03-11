@@ -19,7 +19,9 @@
             </li>
         {% else %}
             <li class="nav-item">
-                <a class="nav-link {% if active == 'login' %}active{% endif %}" href="#">{% trans "Login" %}</a>
+                <a class="nav-link {% if active == 'login' %}active{% endif %}" href="{% url 'account_login' %}">
+                    {% trans "Login" %}
+                </a>
             </li>
         {% endif %}
     </ul>

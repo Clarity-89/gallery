@@ -295,7 +295,7 @@ SHOW_ALERT = True
 SITE_ID = 1
 
 # Allauth
-LOGIN_REDIRECT_URL = reverse_lazy('accounts:projects')
+LOGIN_REDIRECT_URL = reverse_lazy('photos:list')
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_UNIQUE_EMAIL = True

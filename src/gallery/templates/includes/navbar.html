@@ -1,14 +1,26 @@
 {% load i18n static %}
-<ul class="nav">
-    <li class="nav-item">
-        <a class="nav-link {% if active == 'home' %}active{% endif %}" href="/">{% trans "Home" %}</a>
-    </li>
+<div class="navbar">
+    <ul class="nav">
+        <li class="nav-item">
+            <a class="nav-link {% if active == 'home' %}active{% endif %}" href="/">{% trans "Home" %}</a>
+        </li>
+    </ul>
 
-    <li class="nav-item">
-        <a class="nav-link {% if active == 'photos' %}active{% endif %}" href="{% url 'photos:list' %}">{% trans "Photos" %}</a>
-    </li>
+    <ul class="nav justify-content-end">
+        <li class="nav-item">
+            <a class="nav-link {% if active == 'photos' %}active{% endif %}" href="{% url 'photos:list' %}">
+                {% trans "Photos" %}
+            </a>
+        </li>
 
-    <li class="nav-item">
-        <a class="nav-link {% if active == 'profile' %}active{% endif %}" href="#">{% trans "Profile" %}</a>
-    </li>
-</ul>
+        {% if user.is_authenticated %}
+            <li class="nav-item">
+                <a class="nav-link {% if active == 'profile' %}active{% endif %}" href="#">{% trans "Profile" %}</a>
+            </li>
+        {% else %}
+            <li class="nav-item">
+                <a class="nav-link {% if active == 'login' %}active{% endif %}" href="#">{% trans "Login" %}</a>
+            </li>
+        {% endif %}
+    </ul>
+</div>

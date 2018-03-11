@@ -1,0 +1,12 @@
+.footer {
+  text-align: center;
+  height: 50px;
+  line-height: 50px;
+
+  &__inline {
+    position: absolute;
+    bottom: 1em;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}

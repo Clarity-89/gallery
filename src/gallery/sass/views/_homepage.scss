@@ -1,0 +1,30 @@
+.homepage {
+  background: center no-repeat;
+  background-size: cover;
+  height: calc(100% + 72px);
+  margin-top: -72px;
+  margin-bottom: 0;
+  color: white;
+
+  &__overlay {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.3);
+  }
+
+  &__main-btn {
+    background: transparent;
+    color: white;
+
+    &:hover {
+      background: darken(white, 5%);
+    }
+  }
+}

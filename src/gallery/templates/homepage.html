@@ -1,22 +1,30 @@
-{% extends "base.html" %}{% load i18n staticfiles %}
+{% extends "base.html" %}{% load i18n static %}
+{% block body-class %}landing{% endblock %}
 
 {% block header %}
     {% include "includes/navbar.html" with active='home' %}
 {% endblock %}
 
 {% block content %}
-    <div class="jumbotron jumbotron-fluid">
-        <div class="container">
-            <h1 class="display-4">{% trans "Welcome to Photo Gallery" %}</h1>
-            <p class="lead">
-                {% blocktrans %}
-
-                {% endblocktrans %}
-            </p>
-            <hr class="my-4">
-            <p class="lead">
-                <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-            </p>
+    <div class="jumbotron jumbotron-fluid homepage" style="background-image: url({% static 'img/background.jpg' %})">
+        <div class="homepage__overlay">
+            <div class="container homepage__container">
+                <h1 class="display-4">{% trans "Welcome to the Photo Gallery" %}</h1>
+                <p class="lead">
+                    {% blocktrans %}
+                        Here you can view interesting images from all around the world!
+                    {% endblocktrans %}
+                </p>
+                <hr class="my-4">
+                <p class="lead">
+                    <a class="btn btn-light btn-lg homepage__main-btn" href="{% url 'photos:list' %}" role="button">
+                        {% trans 'View latest' %}
+                    </a>
+                </p>
+            </div>
+            <p class="footer__inline">{% include 'includes/footer.html' %}</p>
         </div>
     </div>
 {% endblock %}
+
+{% block footer %}{% endblock %}

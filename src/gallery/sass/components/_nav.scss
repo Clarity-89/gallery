@@ -1,5 +1,6 @@
 .nav {
   padding: 1em;
+  z-index: 1;
 }
 
 .nav-link {
@@ -7,5 +8,11 @@
 
   &.active {
     text-decoration: underline;
+  }
+}
+
+.landing {
+.nav-link  {
+    color: white;
   }
 }

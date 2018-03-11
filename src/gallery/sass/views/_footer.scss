@@ -8,5 +8,10 @@
     bottom: 1em;
     left: 50%;
     transform: translateX(-50%);
+
+    @include xs-screen {
+      width: 100%;
+      padding: 0 1em;
+    }
   }
 }

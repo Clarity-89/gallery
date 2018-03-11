@@ -1,1 +1,20 @@
-Photo detail
+{% extends "base.html" %}{% load i18n static %}
+
+{% block header %}
+    {% include "includes/navbar.html" with active='photos' %}
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="photo col-sm-12">
+                <img class="photo__img" src="{{ photo.picture.url }}">
+                <h4 class="photo__title">{{ photo.title }}</h4>
+                <p class="photo__date">{{ photo.date_added }}</p>
+                <p class="photo__location">{{ photo.location }}</p>
+                <p class="phoyo__description">test</p>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

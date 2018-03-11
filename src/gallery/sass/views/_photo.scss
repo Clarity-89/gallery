@@ -1,0 +1,12 @@
+.photo {
+
+  &__img {
+    max-width: 100%;
+  }
+
+  &__date {
+    font-size: 12px;
+    color: #717171;
+    margin-bottom: 0.5em;
+  }
+}

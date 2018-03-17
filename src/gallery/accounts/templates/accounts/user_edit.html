@@ -16,6 +16,7 @@
 
             <h2 class="profile__header">{% trans "Edit Profile" %}</h2>
 
+            {% form_field form.username placeholder="Username" %}
             {% form_field form.first_name placeholder="First name" %}
 
             {% form_field form.last_name placeholder="Last name" %}
@@ -27,10 +28,10 @@
             {% form_field form.address_street placeholder="Address" %}
             {% form_field form.postal_code placeholder="Postal code" %}
 
-            {% form_field form.city placeholder="City"%}
+            {% form_field form.city placeholder="City" %}
             {% form_field form.country %}
 
-            <div class="col-xs12 portal__buttons">
+            <div class="profile__buttons">
                 <button type="submit" class="btn btn-success">{% trans "Save" %}</button>
 
                 <a href="{% url "accounts:detail" pk=user.pk %}" class="btn btn-dark">

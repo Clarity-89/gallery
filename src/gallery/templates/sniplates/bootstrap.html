@@ -5,6 +5,7 @@ How to render the label
     {% if label %}
         <label id="label_{{ id_for_label }}" for="{{ id }}"
                class="control-label {{ required|yesno:"formfield__label--required," }}">
+            {{ label }}
         </label>
     {% endif %}
 {% endblock %}
@@ -53,8 +54,8 @@ Base error list for either non_field or non_form errors. These are not attached 
 Wrapper to apply the bootstrap markup/classnames
 {% block bootstrap_wrapped %}
     <div class="formfield {{ extra_wrapper_classes }}">
-        {{ content }}
         {% reuse "_label" %}
+        {{ content }}
         {% reuse "_help" %}
         {% reuse "_errors" %}
     </div>
@@ -69,7 +70,7 @@ Base input, to be re-used for all input type="some-type" elements
                id="{{ id }}"
                value="{{ raw_value|default:"" }}"
                {% if placeholder %}placeholder="{{ placeholder }}"{% endif %}
-               class="signup-form__input form-control form-control-custom {{ css_classes }} {{ errors|yesno:"error," }} {{ extra_css_classes }}"
+               class="form-control form-control__input form-control-custom {{ css_classes }} {{ errors|yesno:"error," }} {{ extra_css_classes }}"
                 {{ widget.attrs|flatattrs }}
                 {{ required|yesno:"required," }}
                 {{ autofocus|yesno:"autofocus," }}
@@ -124,11 +125,6 @@ Specific input types
         {% reuse "input" input_type="file" raw_value="" %}
     </div>
 {% endblock %}
-
-TODO:
-{% block SplitDateTimeWidget %}TODO: SplitDateTimeWidget{% endblock %}
-{% block SplitHiddenDateTimeWidget %}TODO: SplitHiddenDateTimeWidget{% endblock %}
-
 
 {% block MultipleHiddenInput %}
     {% for value in raw_value %}

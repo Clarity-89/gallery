@@ -2,7 +2,7 @@
   max-width: 700px;
   background: $white;
   padding: 2em;
-  margin-top: 2em;
+  margin: 2em auto;
 
   &__group {
     display: flex;
@@ -33,5 +33,15 @@
     &--bottom {
       font-size: 16px;
     }
+  }
+
+  &__buttons {
+    margin-top: 2em;
+  }
+
+  .control-label {
+    color: $dark-grey;
+    font-size: 12px;
+    text-transform: uppercase;
   }
 }

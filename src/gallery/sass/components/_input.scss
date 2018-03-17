@@ -1,0 +1,19 @@
+.form-control {
+
+  &__input, &--select {
+    margin-bottom: 1em;
+    color: #000;
+  }
+
+  &.error {
+    border: 1px solid red;
+  }
+}
+
+.errorlist {
+  margin-top: -.5em;
+
+  li {
+    color: red;
+  }
+}

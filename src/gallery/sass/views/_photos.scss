@@ -1,6 +1,10 @@
 .photos {
   padding: 5em 0;
-  display: flex;
+
+  &__header {
+    margin: 2em auto;
+    text-align: center;
+  }
 
   &__card {
     width: 300px;
@@ -15,6 +19,10 @@
   // Mobile styles
   @include xs-screen {
     flex-flow: wrap;
+
+    &__header {
+      margin: 1em auto;
+    }
 
     &__card {
       margin: 1em auto;

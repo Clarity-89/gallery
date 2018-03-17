@@ -3,8 +3,8 @@
 How to render the label
 {% block _label %}
     {% if label %}
-        <label alt='{{ label }}' placeholder='{{ label }}' id="label_{{ id_for_label }}" for="{{ id }}"
-               class="control-label floating-label formfield__label {{ required|yesno:"formfield__label--required," }}">
+        <label id="label_{{ id_for_label }}" for="{{ id }}"
+               class="control-label {{ required|yesno:"formfield__label--required," }}">
         </label>
     {% endif %}
 {% endblock %}
@@ -247,13 +247,4 @@ TODO:
             {% endfor %}
         </div>
     {% endfor %}
-{% endblock %}
-
-
-{% block submit %}
-    <div class="submit-wrapper">
-        <button type="submit" name="submit-form" class="btn {{ btn_class|default:'btn--green' }} signup-form__submit">
-            {{ btn_text|default:_('Submit') }}<i class="fa fa-angle-double-right signup-form__submit-icon"></i>
-        </button>
-    </div>
 {% endblock %}

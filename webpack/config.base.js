@@ -7,11 +7,6 @@ var extractMainCss = new MiniCssExtractPlugin({
     filename: '../css/screen.css'
 });
 
-
-var extractPrintCss = new MiniCssExtractPlugin({
-    filename: '../css/print.css'
-});
-
 var extractConfig = {
     css: {
         loader: 'css-loader',
@@ -45,9 +40,6 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /print\.(css|sass|scss)$/,
-                use: [MiniCssExtractPlugin.loader, extractConfig.css, extractConfig.sass]
-            }, {
                 test: /screen\.(css|sass|scss)$/,
                 use: [MiniCssExtractPlugin.loader, extractConfig.css, extractConfig.sass]
             },
@@ -74,7 +66,7 @@ module.exports = {
     devtool: 'inline-source-map',
 
     plugins: [
-        extractMainCss, extractPrintCss
+        extractMainCss
     ],
 
     optimization: {

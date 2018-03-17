@@ -1,1 +1,44 @@
-Edit user
+{% extends "base.html" %}{% load i18n sniplates countries static %}
+{% block body-class %}no-margin{% endblock %}
+
+{% block header %}
+    {% include "includes/navbar.html" with active='profile' %}
+{% endblock %}
+
+{% block content %}
+    <div class="container profile">
+        <form enctype="multipart/form-data" class="form-horizontal user-form" action="." method="post" id="user-form"
+              novalidate>
+            {% load_widgets form='sniplates/bootstrap.html' %}
+            {% csrf_token %}
+
+            {% widget 'form:non_field_errors' %}
+
+            <h2 class="profile__header">{% trans "Edit Profile" %}</h2>
+
+            {% form_field form.first_name placeholder="First name" %}
+
+            {% form_field form.last_name placeholder="Last name" %}
+
+            {% form_field form.email placeholder="Email" %}
+
+            {% form_field form.phone placeholder="Phone number" %}
+
+            {% form_field form.address_street placeholder="Address" %}
+            {% form_field form.postal_code placeholder="Postal code" %}
+
+            {% form_field form.city placeholder="City"%}
+            {% form_field form.country %}
+
+            <div class="col-xs12 portal__buttons">
+                <button type="submit" class="btn btn-success">{% trans "Save" %}</button>
+
+                <a href="{% url "accounts:detail" pk=user.pk %}" class="btn btn-dark">
+                    {% trans "Cancel" %}
+                </a>
+            </div>
+
+        </form>
+    </div>
+
+{% endblock %}

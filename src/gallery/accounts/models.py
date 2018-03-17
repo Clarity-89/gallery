@@ -34,6 +34,11 @@ class User(AbstractBaseUser, PermissionsMixin):
         ),
     )
     date_joined = models.DateTimeField(_('date joined'), default=timezone.now)
+    phone = models.CharField(_('phone number'), max_length=15, blank=True)
+    address_street = models.CharField(_('street'), max_length=255, blank=True)
+    postal_code = models.CharField(_('postal code'), max_length=20, blank=True)
+    city = models.CharField(_('city'), max_length=64, blank=True)
+    country = CountryField(_('country'), blank=True)
 
     objects = UserManager()
 

@@ -15,7 +15,9 @@
 
         {% if user.is_authenticated %}
             <li class="nav-item">
-                <a class="nav-link {% if active == 'profile' %}active{% endif %}" href="#">{% trans "Profile" %}</a>
+                <a class="nav-link {% if active == 'profile' %}active{% endif %}" href="{% url "accounts:detail" pk=user.pk %}">
+                    {% trans "Profile" %}
+                </a>
             </li>
         {% else %}
             <li class="nav-item">

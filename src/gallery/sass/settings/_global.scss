@@ -30,12 +30,17 @@ body {
 
 main {
   flex: 1;
-  margin-top: -72px;
   background: $background-color;
 }
 
-.no-margin {
+.landing {
   main {
-    margin-top: 0;
+    margin-top: -72px;
   }
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background: $white;
 }

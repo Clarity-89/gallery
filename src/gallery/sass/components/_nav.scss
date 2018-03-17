@@ -21,3 +21,10 @@
   background: $white;
   display: -webkit-box;
 }
+
+.landing {
+  .navbar {
+    background: transparent;
+    display: flex;
+  }
+}

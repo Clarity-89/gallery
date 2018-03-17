@@ -26,7 +26,9 @@
             {% widget 'accounts:profile' label=_("Postal Code") value=user.postal_code %}
         </div>
 
-        {% widget 'accounts:profile' label=_("Country") value=user.country.name %}
+        <div class="profile__group">
+            {% widget 'accounts:profile' label=_("Country") value=user.country.name %}
+        </div>
 
         <a href="{% url 'accounts:edit' pk=user.pk %}" class="btn btn-success btn__edit btn--center">
             {% trans "Edit Profile" %}

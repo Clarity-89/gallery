@@ -1,5 +1,4 @@
 .photos {
-  padding: 5em 0;
 
   &__header {
     margin: 2em auto;
@@ -16,6 +15,9 @@
     max-height: 200px;
   }
 
+  &__detail {
+    margin-top: 2em;
+  }
   // Mobile styles
   @include xs-screen {
     flex-flow: wrap;

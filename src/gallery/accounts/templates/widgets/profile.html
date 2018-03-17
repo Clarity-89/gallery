@@ -1,0 +1,9 @@
+{% load sniplates %}
+
+
+{% block profile %}
+        <div class="profile__row">
+            <p class="profile__col profile__col--top">{{ label }}</p>
+            <p class="profile__col profile__col--bottom">{% if value %}{{ value }}{% else %}-{% endif %}</p>
+        </div>
+{% endblock profile %}

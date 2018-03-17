@@ -1,1 +1,35 @@
-User detail
+{% extends "base.html" %}{% load i18n sniplates static %}
+{% block body-class %}no-margin{% endblock %}
+
+{% block header %}
+    {% include "includes/navbar.html" with active='profile' %}
+{% endblock %}
+
+{% block content %}
+    {% load_widgets accounts='widgets/profile.html' %}
+
+    <div class="container profile">
+        <h3 class="profile__header">{% trans "Profile" %}</h3>
+
+        <div class="profile__group">
+            {% widget 'accounts:profile' label=_('Full Name') value=user.get_full_name %}
+            {% widget 'accounts:profile' label=_("Email") value=user.email %}
+        </div>
+
+        <div class="profile__group">
+            {% widget 'accounts:profile' label=_("Phone Number") value=user.phone %}
+            {% widget 'accounts:profile' label=_("Street Address") value=user.address_street %}
+        </div>
+
+        <div class="profile__group">
+            {% widget 'accounts:profile' label=_("City") value=user.city %}
+            {% widget 'accounts:profile' label=_("Postal Code") value=user.postal_code %}
+        </div>
+
+        {% widget 'accounts:profile' label=_("Country") value=user.country.name %}
+
+        <a href="{% url 'accounts:edit' pk=user.pk %}" class="btn btn-success btn__edit btn--center">
+            {% trans "Edit Profile" %}
+        </a>
+    </div>
+{% endblock content %}

@@ -1,0 +1,12 @@
+.btn {
+
+  &__edit {
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+  }
+
+  &--center {
+    margin: 0 auto;
+  }
+}

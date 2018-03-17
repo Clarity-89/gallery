@@ -1,0 +1,259 @@
+{% load i18n sniplates %}
+
+How to render the label
+{% block _label %}
+    {% if label %}
+        <label alt='{{ label }}' placeholder='{{ label }}' id="label_{{ id_for_label }}" for="{{ id }}"
+               class="control-label floating-label formfield__label {{ required|yesno:"formfield__label--required," }}">
+        </label>
+    {% endif %}
+{% endblock %}
+
+How to render help_text
+{% block _help %}
+    {% if help_text %} <span class="help-text">{{ help_text }}</span> {% endif %}
+{% endblock %}
+
+How to render errors - attached to a field
+{% block _errors %}
+    {% if errors %}
+        <ul class="errorlist">
+            {% for error in errors %}
+                <li class="error">{{ error }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endblock %}
+
+Base error list for either non_field or non_form errors. These are not attached to any particular field
+{% block _non_field_errors %}
+    <div class="panel panel-danger">
+        <div class="panel-heading">{{ heading }}</div>
+        <ul class="list-group">
+            {% for error in error_list %}
+                <li class="list-group-item error">{{ error }}</li>{% endfor %}
+        </ul>
+    </div>
+{% endblock %}
+
+
+{% block non_field_errors %}
+    {% if form.non_field_errors %}
+        {% reuse '_non_field_errors' heading=_('The form contains errors') error_list=form.non_field_errors %}
+    {% endif %}
+{% endblock %}
+
+{% block non_form_errors %}
+    {% if formset.non_form_errors %}
+        {% reuse '_non_field_errors' heading=_('Some errors occurred between the forms') error_list=formset.non_form_errors %}
+    {% endif %}
+{% endblock %}
+
+
+Wrapper to apply the bootstrap markup/classnames
+{% block bootstrap_wrapped %}
+    <div class="formfield {{ extra_wrapper_classes }}">
+        {{ content }}
+        {% reuse "_label" %}
+        {% reuse "_help" %}
+        {% reuse "_errors" %}
+    </div>
+{% endblock %}
+
+
+Base input, to be re-used for all input type="some-type" elements
+{% block _input %}
+    {% with input_type=input_type|default:form_field.field.widget.input_type|default:'text' %}
+        <input type="{{ input_type }}"
+               name="{{ html_name }}"
+               id="{{ id }}"
+               value="{{ raw_value|default:"" }}"
+               {% if placeholder %}placeholder="{{ placeholder }}"{% endif %}
+               class="signup-form__input form-control form-control-custom {{ css_classes }} {{ errors|yesno:"error," }} {{ extra_css_classes }}"
+                {{ widget.attrs|flatattrs }}
+                {{ required|yesno:"required," }}
+                {{ autofocus|yesno:"autofocus," }}
+        >
+    {% endwith %}
+{% endblock %}
+
+
+Generic Bootstrap wrapped input field
+{% block input %}
+{% nested_widget ':bootstrap_wrapped' %}
+{% reuse "_input" %}
+{% endnested %}
+{% endblock %}
+
+Specific input types
+{% block TextInput %}{% reuse "input" %}{% endblock %}
+{% block EmailInput %}{% reuse "input" input_type="email" %}{% endblock %}
+{% block NumberInput %}{% reuse "input" input_type="number" %}{% endblock %}
+{% block URLInput %}{% reuse "input" input_type="url" %}{% endblock %}
+{% block PasswordInput %}{% reuse "input" input_type="password" raw_value="" %}{% endblock %}
+{% block DateInput %}
+    {% reuse 'input' input_type='text' extra_css_classes='date' value=raw_value|date:'SHORT_DATE_FORMAT' %}{% endblock %}
+{% block DateTimeInput %}{% reuse "input" input_type="datetime" raw_value=raw_value|date:'Y-m-d H:i:s' %}{% endblock %}
+{% block TimeInput %}{% reuse "input" input_type="time" raw_value=raw_value|date:'H:i:s' %}{% endblock %}
+
+{% block FileInput %}
+    {% with suffix=suffix|default:'file' %}
+        <div class="file-upload fileinput fileinput-new input-group {{ "file-upload__"|add:suffix }} {{ extra_classes }}">
+            <span class="file-upload__label {{ "file-upload__label--"|add:suffix }}">{{ label }}</span>
+            {% reuse "_input" input_type="file" raw_value="" %}
+            <i class="fa fa-3x fa-cloud-upload file-upload__icon" aria-hidden="true"></i>
+            <label for="{{ id }}" class="file-upload__button {{ "file-upload__button--"|add:suffix }} btn btn--green">
+                <i class="fa fa-upload"></i>
+                {% trans "Browse" %}
+            </label>
+            {% reuse "_label" %}
+            {% reuse "_help" %}
+            {% reuse "_errors" %}
+        </div>
+    {% endwith %}
+{% endblock %}
+
+{% block ClearableFileInput %}
+    <div class="file-upload">
+        {% if raw_value %}
+            {% trans "Currently" %}: <a href="{{ url }}">{{ url }}</a>
+            <input type="checkbox" name="{{ html_name }}-clear" id="{{ html_name }}-clear_id">
+            <label for="{{ html_name }}-clear_id">{% trans "Clear" %}</label><br>
+            {% trans "Change" %}:
+        {% endif %}
+        {% reuse "input" input_type="file" raw_value="" %}
+    </div>
+{% endblock %}
+
+TODO:
+{% block SplitDateTimeWidget %}TODO: SplitDateTimeWidget{% endblock %}
+{% block SplitHiddenDateTimeWidget %}TODO: SplitHiddenDateTimeWidget{% endblock %}
+
+
+{% block MultipleHiddenInput %}
+    {% for value in raw_value %}
+        <input type="hidden" name="{{ name }}" id="{{ id }}_{{ forloop.counter0 }}"
+               value="{{ value|default:'' }}" {{ widget.attrs|flatattrs }} {{ required|yesno:"required," }}>
+    {% endfor %}
+{% endblock %}
+
+{% block RadioSelect %}
+{% nested_widget ':bootstrap_wrapped' %}
+<ul id="{{ id }}">
+    {% for val, display in choices %}
+        <li>
+            <input type="radio" name="{{ html_name }}" id="{{ id }}_{{ forloop.counter0 }}"
+                   value="{{ val }}" {% if val == value|default:"" %}checked{% endif %}>
+            {{ display }}
+        </li>
+    {% endfor %}
+</ul>
+{% endnested %}
+{% endblock %}
+
+
+{% block CheckboxSelectMultiple %}
+{% nested_widget ':bootstrap_wrapped' %}
+<ul id="{{ id }}">
+    {% for val, display in choices %}
+        <li>
+            <input type="checkbox" name="{{ html_name }}" id="{{ id }}_{{ forloop.counter0 }}"
+                   value="{{ val }}" {% if val in raw_value %}checked{% endif %}>
+            {{ display }}
+        </li>
+    {% endfor %}
+</ul>
+{% endnested %}
+{% endblock %}
+
+
+{% block CheckboxSelectMultipleCustom %}
+    <table class="portal__level-table">
+        <tr>
+            {% for val, display in choices %}
+                {% if forloop.counter0 != 0 %}
+                    <td class="portal__radio-input">
+                        <input id="{{ id }}_{{ forloop.counter0 }}" type="radio" name="{{ html_name }}"
+                               {% if val in raw_value %}checked{% endif %} value="{{ val }}" class="portal__box-input">
+                        <label for="{{ id }}_{{ forloop.counter0 }}">{{ display|capfirst }}</label>
+                    </td>
+                {% endif %}
+            {% endfor %}
+        </tr>
+    </table>
+    {% reuse '_errors' %}
+{% endblock %}
+
+{% block HiddenInput %}
+    <input type="hidden" name="{{ html_name }}" id="{{ id }}" value="{{ raw_value|default:"" }}">
+{% endblock HiddenInput %}
+
+
+{% block Select %}
+{% nested_widget ':bootstrap_wrapped' %}
+<select name="{{ html_name }}" id="{{ id }}" {{ widget.attrs|flatattrs }}
+        class="form-control {{ css_classes }} form-control--select" {% if multiple %}multiple{% endif %}
+        {% if placeholder %} data-placeholder={{ placeholder }}{% endif %}>
+
+    {% for val, display in choices %}
+        <option value="{{ val }}" {% if val == value|default:None %}selected{% endif %}>{{ display }}</option>
+    {% endfor %}
+</select>
+{% endnested %}
+{% endblock %}
+
+{% block NullBooleanSelect %}{% reuse "Select" %}{% endblock %}
+{% block SelectMultiple %}{% reuse "Select" multiple=True %}{% endblock %}
+
+
+{% block CheckboxInput %}
+    <div class="form-group">
+        <div class="checkbox">
+            <label for="{{ form_field.id_for_label }}" class="{{ css_classes }}">
+                <input name="{{ html_name }}" id="{{ id }}" type="checkbox" {{ raw_value|yesno:'checked,' }}>
+                {{ form_field.label }}
+            </label>
+            {% reuse '_help' %}
+        </div>
+        {% reuse '_errors' %}
+    </div>
+{% endblock %}
+
+
+{% block Textarea %}
+{% nested_widget ':bootstrap_wrapped' %}
+<textarea name="{{ html_name }}" id="{{ id }}"
+          class="form-control form-control-custom {{ css_classes }} {{ errors|yesno:"error," }}"
+        {{ required|yesno:"required," }}
+        {{ autofocus|yesno:"autofocus," }}
+          {% if placeholder %}placeholder="{{ placeholder }}"{% endif %}
+          {% if cols %}cols="{{ cols }}"{% endif %}
+          {% if rows %}rows="{{ rows }}"{% endif %}
+>{{ raw_value|default:'' }}</textarea>
+{% endnested %}
+{% endblock %}
+
+
+{% block LazySelect %}{% reuse 'Select' %}{% endblock LazySelect %}
+
+
+{% block formset %}
+    {% reuse 'non_form_errors' %}
+    {% for form in formset %}
+        <div class="formset-form">
+            {% reuse 'non_field_errors' %}
+            {% for field in form %}
+                {% form_field field %}
+            {% endfor %}
+        </div>
+    {% endfor %}
+{% endblock %}
+
+
+{% block submit %}
+    <div class="submit-wrapper">
+        <button type="submit" name="submit-form" class="btn {{ btn_class|default:'btn--green' }} signup-form__submit">
+            {{ btn_text|default:_('Submit') }}<i class="fa fa-angle-double-right signup-form__submit-icon"></i>
+        </button>
+    </div>
+{% endblock %}

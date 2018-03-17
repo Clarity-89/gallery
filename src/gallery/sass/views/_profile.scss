@@ -1,0 +1,37 @@
+.profile {
+  max-width: 700px;
+  background: $white;
+  padding: 2em;
+  margin-top: 2em;
+
+  &__group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__header {
+    text-align: center;
+    margin-bottom: 2em;
+  }
+
+  &__row {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1em;
+  }
+
+  &__col {
+    line-height: 2;
+
+    &--top {
+      text-transform: uppercase;
+      color: $dark-grey;
+      font-size: 12px;
+    }
+
+    &--bottom {
+      font-size: 16px;
+    }
+  }
+}

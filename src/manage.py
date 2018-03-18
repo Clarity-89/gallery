@@ -3,7 +3,7 @@ import os
 import sys
 
 if __name__ == "__main__":
-    if os.getenv('ON_HEROKU') == '1':
+    if os.getenv('STAGING') == '1':
         os.environ.setdefault("DJANGO_SETTINGS_MODULE", "gallery.settings.staging")
     elif os.getenv('PROD') == '1':
         os.environ.setdefault("DJANGO_SETTINGS_MODULE", "gallery.settings.production")

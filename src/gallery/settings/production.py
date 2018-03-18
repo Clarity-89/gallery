@@ -1,6 +1,8 @@
 from .base import *
 import raven
 
+import dj_database_url
+db_from_env = dj_database_url.config(conn_max_age=500)
 #
 # Standard Django settings.
 #
@@ -20,6 +22,8 @@ DATABASES = {
         'PORT': '',  # Set to empty string for default.
     }
 }
+
+
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = os.getenv('SECRET_KEY')

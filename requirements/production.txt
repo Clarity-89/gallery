@@ -1,3 +1,4 @@
 -r base.txt
 uwsgi
 gunicorn==19.7.1
+dj-database-url==0.5.0

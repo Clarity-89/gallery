@@ -96,22 +96,13 @@ X_FRAME_OPTIONS = 'DENY'
 # Only set this when we're behind Nginx
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
-#
-# Library settings
-#
-
-# Raven
-INSTALLED_APPS = INSTALLED_APPS + [
-    'raven.contrib.django.raven_compat',
-]
-# RAVEN_CONFIG = {
-#     'dsn': 'https://',
-#     'release': raven.fetch_git_sha(os.path.dirname(os.pardir)),
-# }
 LOGGING['handlers'].update({
     'sentry': {
         'level': 'WARNING',
         'class': 'raven.handlers.logging.SentryHandler',
-        # 'dsn': RAVEN_CONFIG['dsn']
     },
 })
+
+MIDDLEWARE += [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+]

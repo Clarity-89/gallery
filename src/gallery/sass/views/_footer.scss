@@ -2,12 +2,16 @@
   text-align: center;
   height: 50px;
   line-height: 50px;
+  color: white;
+  font-size: 14px;
+  background: $footer-bg;
 
   &__inline {
     position: absolute;
     bottom: 1em;
     left: 50%;
     transform: translateX(-50%);
+    font-size: 14px;
 
     @include xs-screen {
       width: 100%;

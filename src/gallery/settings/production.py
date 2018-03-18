@@ -28,7 +28,7 @@ DATABASES['default'].update(db_from_env)
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = os.getenv('SECRET_KEY')
 
-ALLOWED_HOSTS = ['0.0.0.0', 'https://gallery-viewer.herokuapp.com/']
+ALLOWED_HOSTS = ['0.0.0.0', 'gallery-viewer.herokuapp.com/', 'www.gallery-viewer.herokuapp.com/']
 
 # # Redis cache backend
 # # NOTE: If you do not use a cache backend, do not use a session backend or

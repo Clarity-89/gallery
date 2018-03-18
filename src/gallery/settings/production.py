@@ -30,6 +30,10 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 
 ALLOWED_HOSTS = ['*']
 
+INSTALLED_APPS += [
+    'storages'
+]
+
 # # Redis cache backend
 # # NOTE: If you do not use a cache backend, do not use a session backend or
 # # cached template loaders that rely on a backend.

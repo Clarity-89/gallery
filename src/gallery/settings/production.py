@@ -28,7 +28,7 @@ DATABASES = {
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = os.getenv('SECRET_KEY')
 
-ALLOWED_HOSTS = ['claritydev.net', '188.166.1.116', '0.0.0.0']
+ALLOWED_HOSTS = ['0.0.0.0', 'https://gallery-viewer.herokuapp.com/']
 
 # # Redis cache backend
 # # NOTE: If you do not use a cache backend, do not use a session backend or

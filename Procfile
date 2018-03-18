@@ -1,0 +1,1 @@
+web: gunicorn --pythonpath src gallery.wsgi --log-file -

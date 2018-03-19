@@ -99,6 +99,7 @@ MEDIA_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 
 # E-Mail settings
+DEFAULT_FROM_EMAIL = 'account@gallery-viewer.herokuapp.com'
 EMAIL_BACKEND = "sendgrid_backend.SendgridBackend"
 SENDGRID_API_KEY = os.getenv("SENDGRID_API_KEY")
 EMAIL_HOST = 'smtp.sendgrid.net'

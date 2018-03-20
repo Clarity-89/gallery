@@ -1,6 +1,10 @@
 .nav {
   padding: 1em;
   z-index: 1;
+
+  @include xs-screen {
+    padding: 1em 0;
+  }
 }
 
 .nav-link {

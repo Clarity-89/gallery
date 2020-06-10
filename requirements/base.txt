@@ -55,7 +55,7 @@ pycparser==2.18           # via cffi
 pyphen==0.9.4             # via weasyprint
 python3-openid==3.1.0     # via django-allauth
 pytz==2018.3              # via -r base.in, babel, django, django-axes
-pyyaml==3.12              # via tablib
+pyyaml==5.1               # via tablib
 raven==6.6.0              # via -r base.in
 redis==2.10.6             # via django-redis
 requests-oauthlib==0.8.0  # via django-allauth

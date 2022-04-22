@@ -4,70 +4,178 @@
 #
 #    pip-compile --output-file requirements/base.txt requirements/base.in
 #
-babel==2.5.3              # via django-phonenumber-field
-cairocffi==0.8.0          # via cairosvg, weasyprint
-cairosvg==2.1.3           # via weasyprint
-certifi==2018.1.18        # via requests
-cffi==1.11.5              # via cairocffi, weasyprint
-chardet==3.0.4            # via requests
-cssselect2==0.2.1         # via cairosvg
-cssselect==1.0.3          # via weasyprint
-defusedxml==0.5.0         # via cairosvg, python3-openid
-diff-match-patch==20121119  # via django-import-export
-django-admin-index==1.0.0  # via -r base.in
-django-allauth==0.35.0    # via -r base.in
-django-appconf==1.0.2     # via -r base.in, django-axes
-django-autoslug==1.9.3    # via -r base.in
-django-axes==4.1.0        # via -r base.in
-django-choices==1.6.0     # via -r base.in
-django-ckeditor==5.4.0    # via -r base.in
-django-compat==1.0.15     # via django-hijack, django-hijack-admin
-django-countries==5.2     # via -r base.in
-django-extensions==2.0.3  # via -r base.in
-django-hijack-admin==2.1.7  # via -r base.in
-django-hijack==2.1.7      # via -r base.in, django-hijack-admin
-django-import-export==1.0.0  # via -r base.in
-django-ipware==2.0.1      # via django-axes
-django-js-asset==1.0.0    # via django-ckeditor
-django-ordered-model==1.4.3  # via django-admin-index
-django-phonenumber-field==2.0.0  # via -r base.in
-django-redis==4.9.0       # via -r base.in
-django-rosetta==0.8.1     # via -r base.in
-django-sendfile==0.3.11   # via -r base.in
-django-sniplates==0.5.0   # via -r base.in
-django-solo==1.1.3        # via -r base.in
-django==2.2.13            # via -r base.in, django-allauth, django-choices, django-import-export, django-phonenumber-field, django-redis, django-rosetta, django-sendfile, django-sniplates
-djangorestframework==3.9.1  # via -r base.in
-et-xmlfile==1.0.1         # via openpyxl
-html5lib==1.0.1           # via weasyprint
-idna==2.6                 # via requests
-jdcal==1.3                # via openpyxl
-lxml==4.1.1               # via weasyprint
-microsofttranslator==0.8  # via django-rosetta
-oauthlib==2.0.6           # via requests-oauthlib
-odfpy==1.3.6              # via tablib
-openpyxl==2.5.0           # via tablib
-phonenumberslite==8.9.1   # via django-phonenumber-field
-pillow==5.0.0             # via -r base.in, cairosvg
-polib==1.1.0              # via django-rosetta
-psycopg2==2.7.4           # via -r base.in
-pycparser==2.18           # via cffi
-pyphen==0.9.4             # via weasyprint
-python3-openid==3.1.0     # via django-allauth
-pytz==2018.3              # via -r base.in, babel, django, django-axes
-pyyaml==5.1               # via tablib
-raven==6.6.0              # via -r base.in
-redis==2.10.6             # via django-redis
-requests-oauthlib==0.8.0  # via django-allauth
-requests==2.20.0          # via django-allauth, django-rosetta, microsofttranslator, requests-oauthlib
-rules==1.3                # via -r base.in
-six==1.11.0               # via django-compat, django-extensions, django-rosetta, html5lib, microsofttranslator
-sqlparse==0.3.1           # via django
-tablib==0.12.1            # via django-import-export
-tinycss2==0.6.1           # via cairosvg, cssselect2, weasyprint
-unicodecsv==0.14.1        # via tablib
-urllib3==1.24.2           # via requests
-weasyprint==0.38          # via -r base.in
-webencodings==0.5.1       # via html5lib, tinycss2
-xlrd==1.1.0               # via tablib
-xlwt==1.3.0               # via tablib
+babel==2.5.3
+    # via django-phonenumber-field
+cairocffi==0.8.0
+    # via
+    #   cairosvg
+    #   weasyprint
+cairosvg==2.1.3
+    # via weasyprint
+certifi==2018.1.18
+    # via requests
+cffi==1.11.5
+    # via
+    #   cairocffi
+    #   weasyprint
+chardet==3.0.4
+    # via requests
+cssselect==1.0.3
+    # via weasyprint
+cssselect2==0.2.1
+    # via cairosvg
+defusedxml==0.5.0
+    # via
+    #   cairosvg
+    #   python3-openid
+diff-match-patch==20121119
+    # via django-import-export
+django==2.2.28
+    # via
+    #   -r base.in
+    #   django-allauth
+    #   django-choices
+    #   django-import-export
+    #   django-phonenumber-field
+    #   django-redis
+    #   django-rosetta
+    #   django-sendfile
+    #   django-sniplates
+django-admin-index==1.0.0
+    # via -r base.in
+django-allauth==0.35.0
+    # via -r base.in
+django-appconf==1.0.2
+    # via
+    #   -r base.in
+    #   django-axes
+django-autoslug==1.9.3
+    # via -r base.in
+django-axes==4.1.0
+    # via -r base.in
+django-choices==1.6.0
+    # via -r base.in
+django-ckeditor==5.4.0
+    # via -r base.in
+django-compat==1.0.15
+    # via
+    #   django-hijack
+    #   django-hijack-admin
+django-countries==5.2
+    # via -r base.in
+django-extensions==2.0.3
+    # via -r base.in
+django-hijack==2.1.7
+    # via
+    #   -r base.in
+    #   django-hijack-admin
+django-hijack-admin==2.1.7
+    # via -r base.in
+django-import-export==1.0.0
+    # via -r base.in
+django-ipware==2.0.1
+    # via django-axes
+django-js-asset==1.0.0
+    # via django-ckeditor
+django-ordered-model==1.4.3
+    # via django-admin-index
+django-phonenumber-field==2.0.0
+    # via -r base.in
+django-redis==4.9.0
+    # via -r base.in
+django-rosetta==0.8.1
+    # via -r base.in
+django-sendfile==0.3.11
+    # via -r base.in
+django-sniplates==0.5.0
+    # via -r base.in
+django-solo==1.1.3
+    # via -r base.in
+djangorestframework==3.9.1
+    # via -r base.in
+et-xmlfile==1.0.1
+    # via openpyxl
+html5lib==1.0.1
+    # via weasyprint
+idna==2.6
+    # via requests
+jdcal==1.3
+    # via openpyxl
+lxml==4.1.1
+    # via weasyprint
+microsofttranslator==0.8
+    # via django-rosetta
+oauthlib==2.0.6
+    # via requests-oauthlib
+odfpy==1.3.6
+    # via tablib
+openpyxl==2.5.0
+    # via tablib
+phonenumberslite==8.9.1
+    # via django-phonenumber-field
+pillow==5.0.0
+    # via
+    #   -r base.in
+    #   cairosvg
+polib==1.1.0
+    # via django-rosetta
+psycopg2==2.7.4
+    # via -r base.in
+pycparser==2.18
+    # via cffi
+pyphen==0.9.4
+    # via weasyprint
+python3-openid==3.1.0
+    # via django-allauth
+pytz==2018.3
+    # via
+    #   -r base.in
+    #   babel
+    #   django
+    #   django-axes
+pyyaml==5.1
+    # via tablib
+raven==6.6.0
+    # via -r base.in
+redis==2.10.6
+    # via django-redis
+requests==2.20.0
+    # via
+    #   django-allauth
+    #   django-rosetta
+    #   microsofttranslator
+    #   requests-oauthlib
+requests-oauthlib==0.8.0
+    # via django-allauth
+rules==1.3
+    # via -r base.in
+six==1.11.0
+    # via
+    #   django-compat
+    #   django-extensions
+    #   django-rosetta
+    #   html5lib
+    #   microsofttranslator
+sqlparse==0.3.1
+    # via django
+tablib==0.12.1
+    # via django-import-export
+tinycss2==0.6.1
+    # via
+    #   cairosvg
+    #   cssselect2
+    #   weasyprint
+unicodecsv==0.14.1
+    # via tablib
+urllib3==1.24.2
+    # via requests
+weasyprint==0.38
+    # via -r base.in
+webencodings==0.5.1
+    # via
+    #   html5lib
+    #   tinycss2
+xlrd==1.1.0
+    # via tablib
+xlwt==1.3.0
+    # via tablib
